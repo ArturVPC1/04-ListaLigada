@@ -165,46 +165,46 @@ void inserirElemento()
 void excluirElemento()
 {
 	int numeroQueVaiSerDeletado;
-    cout << "Digite o numero que vai ser deletado: \n";
-    cin >> numeroQueVaiSerDeletado;
+	cout << "Digite o numero que vai ser deletado: \n";
+	cin >> numeroQueVaiSerDeletado;
 
-    if (primeiro == NULL)
-    {
-        cout << "A lista esta vazia... \n";
-        return;
-    }
+	if (primeiro == NULL)
+	{
+		cout << "A lista esta vazia... \n";
+		return;
+	}
 
-    NO *posicao = primeiro;
-    NO *anterior = NULL;
+	NO *posicao = primeiro;
+	NO *anterior = NULL;
 
-    // Procurar o elemento na lista
-    while (posicao != NULL && posicao->valor != numeroQueVaiSerDeletado)
-    {
-        anterior = posicao;
-        posicao = posicao->prox;
-    }
+	// Procurar o elemento na lista
+	while (posicao != NULL && posicao->valor != numeroQueVaiSerDeletado)
+	{
+		anterior = posicao;
+		posicao = posicao->prox;
+	}
 
-    // Verificar se o elemento foi encontrado
-    if (posicao == NULL)
-    {
-        cout << "O numero nao foi encontrado\n";
-        return;
-    }
+	// Verificar se o elemento foi encontrado
+	if (posicao == NULL)
+	{
+		cout << "O numero nao foi encontrado\n";
+		return;
+	}
 
-    // Remover o primeiro elemento
-    if (posicao == primeiro)
-    {
-        primeiro = primeiro->prox;
-    }
-    else
-    {
-        anterior->prox = posicao->prox;
-    }
+	// Remover o primeiro elemento
+	if (posicao == primeiro)
+	{
+		primeiro = primeiro->prox;
+	}
+	else
+	{
+		anterior->prox = posicao->prox;
+	}
 
-    free(posicao);
-    cout << "Elemento excluido com sucesso.\n";
-    cout << "Lista atual\n";
-    exibirElementos();
+	free(posicao);
+	cout << "Elemento excluido com sucesso.\n";
+	cout << "Lista atual";
+	exibirElementos();
 }
 
 void buscarElemento()
