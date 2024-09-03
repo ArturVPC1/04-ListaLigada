@@ -165,49 +165,46 @@ void inserirElemento()
 void excluirElemento()
 {
 	int numeroQueVaiSerDeletado;
-	cout << "Digite o numero que vai ser deletado: \n";
-	cin >> numeroQueVaiSerDeletado;
-	NO *numerolista = posicaoElemento(numeroQueVaiSerDeletado);
-	if (primeiro == NULL)
-	{
-		cout << "A lista esta vazia... \n";
-		return;
-	}
-	else if (numerolista == NULL)
-	{
-		cout << "O numero nao foi encontrado\n";
-		return;
-	}
-	if (numerolista->prox != NULL)
-	{
-		NO *posicao = primeiro;
-		NO *anterior = NULL;
-		while (posicao->valor != numeroQueVaiSerDeletado && posicao->prox != NULL)
-		{
-			anterior = posicao;
-			posicao = posicao->prox;
-		}
-		if (anterior == NULL) // deletar o primeiro elemento
-		{
-			primeiro = primeiro->prox;
-			return;
-			if (posicao->prox == NULL) // deletar o unico elemento da lista
-			{
-				primeiro = NULL;
-				return;
-			}
-		}
-		if (posicao->prox == NULL) // deletar o ultimo elemento
-		{
-			anterior->prox = NULL;
-			free(posicao);
-			return;
-		}
-		anterior->prox = posicao->prox;
-		free(posicao);
-		cout << "Lista atual\n";
-		exibirElementos();
-	}
+    cout << "Digite o numero que vai ser deletado: \n";
+    cin >> numeroQueVaiSerDeletado;
+
+    if (primeiro == NULL)
+    {
+        cout << "A lista esta vazia... \n";
+        return;
+    }
+
+    NO *posicao = primeiro;
+    NO *anterior = NULL;
+
+    // Procurar o elemento na lista
+    while (posicao != NULL && posicao->valor != numeroQueVaiSerDeletado)
+    {
+        anterior = posicao;
+        posicao = posicao->prox;
+    }
+
+    // Verificar se o elemento foi encontrado
+    if (posicao == NULL)
+    {
+        cout << "O numero nao foi encontrado\n";
+        return;
+    }
+
+    // Remover o primeiro elemento
+    if (posicao == primeiro)
+    {
+        primeiro = primeiro->prox;
+    }
+    else
+    {
+        anterior->prox = posicao->prox;
+    }
+
+    free(posicao);
+    cout << "Elemento excluido com sucesso.\n";
+    cout << "Lista atual\n";
+    exibirElementos();
 }
 
 void buscarElemento()
